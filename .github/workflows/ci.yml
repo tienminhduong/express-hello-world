@@ -31,3 +31,11 @@ jobs:
           echo "Running Docker container..."
           docker run -d -p 3001:3001 --name express-hello-world-container express-hello-world
           echo "Docker container is running on port 3001"
+
+      - name: Success message
+        if: success()
+        run: echo "CI pipeline completed successfully!"
+
+      - name: Failure message
+        if: failure()
+        run: echo "CI pipeline failed. Please check the logs for details."
